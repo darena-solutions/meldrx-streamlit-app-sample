@@ -1,0 +1,4 @@
+streamlit==1.35.0
+streamlit-oauth==0.1.8
+st-pages ==0.4.5
+meldrx-fhir-client==0.0.8
