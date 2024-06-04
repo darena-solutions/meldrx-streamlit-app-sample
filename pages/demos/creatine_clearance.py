@@ -51,7 +51,7 @@ class App:
                 lambda entry: entry['resource'],
                 patients_result['entry']
             ),
-            format_func=lambda patient: f'{str.join(' ', patient['name'][0]['given'])} {patient['name'][0]['family']}'
+            format_func=lambda patient: f"{str.join(' ', patient['name'][0]['given'])} {patient['name'][0]['family']}"
         )
 
         if patient:

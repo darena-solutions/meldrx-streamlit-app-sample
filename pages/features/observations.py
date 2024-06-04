@@ -46,7 +46,7 @@ class App:
         for patient in map(lambda entry: entry['resource'], patients_result['entry']):
             container = st.container()
             col1, col2 = container.columns(2, gap='small')
-            patient_name = f'{str.join(' ', patient['name'][0]['given'])} {patient['name'][0]['family']}'
+            patient_name = f"{str.join(' ', patient['name'][0]['given'])} {patient['name'][0]['family']}"
             if col1.button(patient_name):
                 self.open_patient(patient)
             if col2.button('Observations', key=i):
@@ -57,7 +57,7 @@ class App:
     def open_patient(self, patient):
         st.markdown(f"""
         - **document id**: `{patient['id']}`
-        - **identifiers**: {str.join('; ', map(lambda i: f'{i['system']}: {i['value']}', patient['identifier']))}
+        - **identifiers**: {str.join('; ', map(lambda i: f"{i['system']}: {i['value']}", patient['identifier']))}
         - **name**: {str.join(' ', patient['name'][0]['given'])} {patient['name'][0]['family']}
         - **gender**: {patient['gender']}
         - **birth date**: {patient['birthDate']}
