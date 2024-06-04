@@ -18,17 +18,17 @@ show_pages(
 )
 
 sign_in_options = [
-    {'workspace_id': os.environ.get('MELDRX_WORKSPACE_ID'), 'name': 'MeldRx', 'search_requirements': None},
-    {'workspace_id': os.environ.get('SMART_WORKSPACE_ID'), 'name': 'SmartHealth IT', 'search_requirements': None},
-    {'workspace_id': os.environ.get('EPIC_WORKSPACE_ID'), 'name': 'Epic', 'search_requirements': ['given', 'family', 'birthDate']},
+    {'workspace_id': os.environ.get('meldrx_workspace_id'), 'name': 'MeldRx', 'search_requirements': None},
+    {'workspace_id': os.environ.get('smart_workspace_id'), 'name': 'SmartHealth IT', 'search_requirements': None},
+    {'workspace_id': os.environ.get('epic_workspace_id'), 'name': 'Epic', 'search_requirements': ['given', 'family', 'birthDate']},
 ]
 
 AUTHORIZE_URL = 'https://app.meldrx.com/connect/authorize'
 TOKEN_URL = 'https://app.meldrx.com/connect/token'
 REFRESH_TOKEN_URL = 'https://app.meldrx.com/connect/token'
 REVOKE_TOKEN_URL = 'https://app.meldrx.com/connect/revocation'
-CLIENT_ID = os.environ.get('CLIENT_ID')
-CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
+CLIENT_ID = os.environ.get('client_id')
+CLIENT_SECRET = os.environ.get('client_secret')
 SCOPE = 'openid profile patient/*.read'
 
 
@@ -37,7 +37,7 @@ for option in sign_in_options:
     workspace_id = option['workspace_id']
     result = oauth2.authorize_button(
         name=option['name'],
-        redirect_uri=f'{os.environ.get('APP_URL')}/component/streamlit_oauth.authorize_button',
+        redirect_uri=f'{os.environ.get('app_url')}/component/streamlit_oauth.authorize_button',
         scope=SCOPE,
         extras_params={'aud': f'https://app.meldrx.com/api/fhir/{workspace_id}'},
         pkce='S256'
