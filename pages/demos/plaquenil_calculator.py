@@ -40,6 +40,7 @@ class App:
                     st.text('failed to find patient')
                     st.json(patients_result)
                     return
+                st.session_state['patients_result'] = patients_result
 
         if len(patients_result['entry']) == 0:
             return
